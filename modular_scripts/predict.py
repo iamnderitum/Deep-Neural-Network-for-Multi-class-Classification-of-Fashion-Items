@@ -55,7 +55,7 @@ def pred_and_plot_image(model: torch.nn.Module,
 
 data_path = Path("../data")
 
-custom_image_path = data_path / "glasses.jpg"
+custom_image_path = data_path / "3.jpg"
 
 custom_image_transform = transforms.Compose([
     transforms.Resize((64, 64)),
