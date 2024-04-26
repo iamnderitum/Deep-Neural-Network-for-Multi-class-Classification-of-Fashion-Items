@@ -8,7 +8,10 @@ def save_model(model: torch.nn.Module,
     
 
     target_dir_path = Path(target_dir)
-    target_dir_path.mkdir(parents=True)
+
+    # Check if the directory already exists
+    if not target_dir_path.exists():
+        target_dir_path.mkdir(parents=True)
 
     # Create model save path
     assert model_name.endswith(".pth") or model_name.endswith(".pt"), "model_name should end with '.pt' or '.pth'"

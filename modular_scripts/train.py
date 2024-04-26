@@ -57,6 +57,6 @@ engine.train(
 )
 
 utils.save_model(model=model,
-                 target_dir="models",
+                 target_dir="../models",
                  model_name="01_going_modular_script_mode_fashionvgg_model.pth"
                 )
