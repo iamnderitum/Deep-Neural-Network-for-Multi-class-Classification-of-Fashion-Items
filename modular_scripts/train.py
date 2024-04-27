@@ -28,7 +28,7 @@ def parse_args():
                         help="Number of hidden units")
     
     return parser.parse_args()
-
+#if __name__ == "__main__":
 args = parse_args()
 # Setup directories
 train_dir = "../data/glasses_shoes_trousers/train"
@@ -37,7 +37,13 @@ test_dir = "../data/glasses_shoes_trousers/test"
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 #CREATE transforms
-data_transform = transforms.Compose([
+train_transform = transforms.Compose([
+    transforms.Resize((64, 64)),
+    transforms.RandomHorizontalFlip(),
+    transforms.RandomRotation(10),
+    transforms.ToTensor()
+])
+test_transform = transforms.Compose([
     transforms.Resize((64, 64)),
     transforms.ToTensor()
 ])
@@ -45,7 +51,8 @@ data_transform = transforms.Compose([
 train_dataloader, test_dataloader, class_names = data_setup.create_dataloader(
     train_dir=train_dir,
     test_dir=test_dir,
-    transform=data_transform,
+    train_transform = train_transform,
+    test_transform=test_transform,
     batch_size=args.batch_size
 )
 

@@ -19,7 +19,7 @@ def plot_and_predict_images(model: torch.nn.Module,
                             class_names: List[str] = None,
                             transform=None,
                             device: torch.device = device,
-                            num_images: int = 10
+                            num_images: int = 15
                             ):
     
     model.to(device)
