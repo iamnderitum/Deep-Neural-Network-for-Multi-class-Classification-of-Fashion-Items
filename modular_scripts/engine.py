@@ -69,6 +69,7 @@ def test_step(model: torch.nn.Module,
 
     test_loss, test_acc = 0, 0
 
+    y_preds = []
     with torch.inference_mode():
         for batch, (X, y) in enumerate(dataloader):
             X, y = X.to(device), y.to(device)
