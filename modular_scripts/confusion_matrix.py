@@ -36,12 +36,12 @@ def confusion_matrix(model: torch.nn.Module,
 
             y_preds.append(y_pred.cpu())
 
-        y_pred_tensor = torch.cat(y_preds)
+    y_pred_tensor = torch.cat(y_preds)
 
     test_data = datasets.ImageFolder(test_dir, transform=custom_image_transform)
     confmat = ConfusionMatrix(num_classes = len(class_names),task="multiclass")
     confmat_tensor = confmat(preds=y_pred_tensor,
-                             target=test_data)
+                             target=test_data.targets)
     
     fig, ax = plot_confusion_matrix(
         conf_mat=confmat_tensor.numpy(),
